@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 配置Struts2的常量 -->
+	<constant name="struts.action.extension" value="action"/>
+	<!-- 开启struts和spring整合-->
+	<constant name="struts.objectFactory" value="spring"/>
+	<!-- 设置上传文件的大小 -->
+	<constant name="struts.multipart.maxSize" value="10000000" />
+	
+<!-- 配置Action -->
+<package name="crm_user" extends="struts-default" namespace="/">
+		
+	<!-- 配置拦截器-->
+	<interceptors>
+		<interceptor name="interceptor1" class="com.lc.crm.web.interceptor.PrivilegeInterceptor"></interceptor>
+	</interceptors>
+	
+	<!-- 将登陆页面配置成全局结果页面,要配置在拦截器后面 -->
+	<global-results>
+		<result name="login">/login.jsp</result>
+		<result name="404">/404.jsp</result>
+	</global-results>
+		
+	<action name="user_*" class="userAction" method="{1}">
+		<result name="registUI">/regist.jsp</result>
+		<result name="regist">/login.jsp</result>
+		<result name="success" type="redirect">/index.jsp</result>
+		<!-- 用户操作不引入拦截器 -->
+	</action>
+		
+	<action name="customer_*" class="customerAction" method="{1}"> 
+		<result name="findSuccess">/resource/customer/resource/list.jsp</result>
+		<result name="addUI">/resource/customer/resource/add.jsp</result>
+		<result name="add">/resource/customer/resource/result.jsp</result>
+		<result name="deleteSucess" type="redirectAction">/customer_pageFind.action</result>
+		<result name="updateUI">/resource/customer/resource/edit.jsp</result>
+		<result name="updateSucess" type="redirectAction">/customer_pageFind.action</result>
+		<result name="input">/resource/customer/resource/add.jsp</result>
+		
+		<!-- 配置拦截器和不拦截的方法 -->
+		<interceptor-ref name="interceptor1">
+			<param name="excludeMethods">login</param>
+			<param name="excludeMethods">registUI</param>
+			<param name="excludeMethods">regist</param>
+		</interceptor-ref>
+		<interceptor-ref name="defaultStack">
+			<!-- 配置拦截上传图片 -->
+			<!-- <param name="fileUpload.maximumSize">2097152</param>
+			<param name="fileUpload.allowedExtensions">.jsp</param> -->
+		</interceptor-ref>
+		
+	</action>
+	
+	<action name="baseDict_*" class="baseDictAction" method="{1}">
+		<!-- 配置结果页面 -->
+		<!-- <result></result> -->
+		
+		<!-- 配置拦截器和不拦截的方法 -->
+		<interceptor-ref name="interceptor1">
+			<param name="excludeMethods">login</param>
+			<param name="excludeMethods">registUI</param>
+			<param name="excludeMethods">regist</param>
+		</interceptor-ref>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+	</action>
+	
+	<action name="linkMan_*" class="linkManAction" method="{1}">
+	
+	</action>
+	
+	<action name="saleVisit_*" class="saleVisitAction" method="{1}">
+		<result name="findAll">/resource/customer/value/list.jsp</result>
+		<result name="addUI">/resource/customer/value/add.jsp</result>
+		<result name="addSuccess" type="redirectAction">/saleVisit_findAll.action</result>
+		<result name="deleteSuccess" type="redirectAction">/saleVisit_findAll.action</result>
+		
+		<!-- 配置拦截器和不拦截的方法 -->
+		<interceptor-ref name="interceptor1">
+			<param name="excludeMethods">login</param>
+			<param name="excludeMethods">registUI</param>
+			<param name="excludeMethods">regist</param>
+		</interceptor-ref>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+		
+	</action>
+	
+	<action name="customerSatisfaction_*" class="customerSatisfactionAction" method="{1}">
+		<result name="findSuccess">/resource/customer/satisfaction/list.jsp</result>
+		<result name="deleteSuccess" type="redirectAction">/customerSatisfaction_pageFind.action</result>
+		<result name="findInfoSuccess">resource/customer/satisfaction/view.jsp</result>
+		<result name="listUI" type="redirectAction">/customerSatisfaction_pageFind.action</result>
+		<result name="findToEdit">/resource/customer/satisfaction/edit.jsp</result>
+		<result name="updateSuccess" type="redirectAction">/customerSatisfaction_pageFind.action</result>
+	</action>
+	
+</package>
+
+</struts>

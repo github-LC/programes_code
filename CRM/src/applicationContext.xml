@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd">	
+	
+	<!-- 开启属性注入的注解 -->
+	<context:annotation-config/>
+	
+	<!-- 加载数据库连接的配置文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+	
+	<!-- 配置数据库连接池和hibernate的其他参数 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClass}"/> 
+		<property name="jdbcUrl" value="${jdbc.url}"/> 
+		<property name="user" value="${jdbc.username}"/> 
+		<property name="password" value="${jdbc.password}"/> 
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<!-- 注入连接池 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 配置hibernate的其他参数 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		
+		<!-- 设置映射文件 -->
+		<property name="mappingResources">
+			<list>
+				<value>com/lc/crm/domain/User.hbm.xml</value>
+				<value>com/lc/crm/domain/Customer.hbm.xml</value>
+				<value>com/lc/crm/domain/BaseDict.hbm.xml</value>
+				<value>com/lc/crm/domain/LinkMan.hbm.xml</value>
+				<value>com/lc/crm/domain/SaleVisit.hbm.xml</value>
+				<value>com/lc/crm/domain/CustomerSatisfaction.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!--将user的各层交给Spring管理  -->
+	<bean id="userAction" class="com.lc.crm.web.action.UserAction" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="userService" class="com.lc.crm.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+		<bean id="userDao" class="com.lc.crm.dao.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- customer的各层交给spring管理 -->
+	<bean id="customerAction" class="com.lc.crm.web.action.CustomerAction" scope="prototype">
+		<property name="customerService" ref="customerService"></property>
+	</bean>
+	<bean id="customerService" class="com.lc.crm.service.impl.CustomerServiceImpl">
+		<property name="customerDao" ref="customerDao"></property>
+	</bean>
+	<bean id="customerDao" class="com.lc.crm.dao.impl.CustomerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 将baseDict的各层交给spring管理 -->
+	<bean id="baseDictAction" class="com.lc.crm.web.action.BaseDictAction" scope="prototype">
+		<property name="baseDictService" ref="baseDictService"></property>
+	</bean>
+	<bean id="baseDictService" class="com.lc.crm.service.impl.BaseDictServiceImpl">
+		<property name="baseDictDao" ref="baseDictDao"></property>
+	</bean>
+	<bean id="baseDictDao" class="com.lc.crm.dao.impl.BaseDictDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+		
+	<!-- 将联系人交给spring管理 -->
+	<bean id="linkManAction" class="com.lc.crm.web.action.LinkManAction" scope="prototype">
+		<property name="linkManService" ref="linkManService"></property>
+		<property name="customerService" ref="customerService"></property>
+	</bean>
+	<bean id="linkManService" class="com.lc.crm.service.impl.LinkManServiceImpl">
+		<property name="linkManDao" ref="linkManDao"></property>
+	</bean>
+	<bean id="linkManDao" class="com.lc.crm.dao.impl.LinkManDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 将客户满意度各层交给spring管理 -->
+	<bean name="customerSatisfactionAction" class="com.lc.crm.web.action.CustomerSatisfactionAction">
+		<property name="customerSatisfactionService" ref="customerSatisfactionService"></property>
+	</bean>
+	<bean name="customerSatisfactionService" class="com.lc.crm.service.impl.CustomerSatisfactionServiceImpl">
+		<property name="customerSatisfactionDao" ref="customerSatisfactionDao"></property>
+	</bean>
+	<bean name="customerSatisfactionDao" class="com.lc.crm.dao.impl.CustomerSatisfactionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 使用注解的方式：配置顾客拜访记录-->
+	<bean id="saleVisitAction" class="com.lc.crm.web.action.SaleVisitAction" scope="prototype"></bean>
+	<bean id="saleVisitService" class="com.lc.crm.service.impl.SaleVisitServiceImpl"></bean>
+	<bean id="saleVisitDao" class="com.lc.crm.dao.impl.SaleVisitDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 开启事务注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+</beans>

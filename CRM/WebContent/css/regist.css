@@ -1,0 +1,68 @@
+/*注册界面美化*/
+#background{
+    width: 100%;
+    height: 650px;
+    background:url("../images/212946-1481117386d062.jpg");
+    background-size:1300px;
+}
+
+#left{
+    float: left;
+    width:450px;
+    height:500px;
+    margin-top:80px;
+    margin-left:215px;
+    opacity:0.2;
+    background-color:white;
+}
+
+#right{
+    float: left;
+    width:450px;
+    height:500px;
+    opacity:0.5;
+    margin-top:80px;
+    background-color:white;
+}
+
+#font{
+    font-size:45px;
+    margin-top:30px;
+    margin-left:50px;
+    color: black;
+    font-family: MingLiU, serif;
+}
+
+.input{
+    margin-left: 55px;
+    width:300px;
+    height:40px;
+    margin-top: 30px;
+    border-radius: 7px;
+    background-color: cadetblue;
+    border-style: none;
+    font-size:18px;
+}
+
+.radio{
+    margin-left: 55px;
+    margin-top:30px;
+}
+
+#sims{
+    font-family: "Palatino Linotype", serif;
+    font-size: 95px;
+    color:darkolivegreen;
+    text-align: center;
+}
+
+#btn{
+	margin-left: 130px;
+    width:150px;
+    height:40px;
+    margin-top: 35px;
+    border-radius: 10px;
+    background-color: cadetblue;
+    border-style: none;
+    font-size:20px;
+}

@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* 你自己的样式 */
+
+.Hui-header{
+	
+	height:78px;
+}
+
+.Hui-logo{
+	margin-top:15px;
+	font-size:35px;
+}
+
+.mainnav{
+	padding-left:200px;
+	margin-top:15px;
+}
+.Hui-userbar{
+	padding-left:200px;
+	margin-top:15px;
+}

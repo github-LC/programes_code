@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.lc.crm.domain.CustomerSatisfaction" table="cst_customer_satisfaction">
+		<id name="satisfaction_id" column="satisfaction_id">
+			<generator class="native"></generator>
+		</id>
+		
+		<property name="survey_date" column="survey_date"></property>
+		<property name="quality_satisfaction" column="quality_satisfaction"></property>
+		<property name="service_satisfaction" column="service_satisfaction"></property>
+		<property name="overall_satisfaction" column="overall_satisfaction"></property>
+		<property name="price_satisfaction" column="price_satisfaction"></property>
+		<property name="customer_feedback" column="customer_feedback"></property>
+		<property name="customer_state" column="customer_state"></property>
+		<property name="consumer_times" column="consumer_times"></property>
+		
+		<!-- 配置 一对一的映射-->
+		<many-to-one name="customer" class="com.lc.crm.domain.Customer" column="satisfaction_cust_id"></many-to-one>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+@charset "utf-8";
+.input{
+    margin-left: 55px;
+    width:500px;
+    height:60px;
+    /* margin-top: 5px; */
+    padding-top:5px;
+    border-radius: 7px;
+    background-color: cadetblue;
+    border-style: none;
+    font-size:18px;
+}
+
+#font{
+    font-size:25px;
+    margin-top:35px;
+    margin-left:50px;
+    color: black;
+    font-family: MingLiU, serif;
+}

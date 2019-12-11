@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../../../Style/skin.css" />	    
+</head>
+    <body>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <!-- 头部开始 -->
+            <tr>
+                <td width="17" valign="top" background="../../../Images/mail_left_bg.gif">
+                    <img src="../../../Images/left_top_right.gif" width="17" height="29" />
+                </td>
+                <td valign="top" background="../../../Images/content_bg.gif">
+                    <table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" background="./../../../Images/content_bg.gif">
+                        <tr><td height="31"><div class="title">员工管理</div></td></tr>
+                    </table>
+                </td>
+                <td width="16" valign="top" background="../../../Images/mail_right_bg.gif"><img src="../../../Images/nav_right_bg.gif" width="16" height="29" /></td>
+            </tr>
+            <!-- 中间部分开始 -->
+            <tr>
+                <!--第一行左边框-->
+                <td valign="middle" background="../../../Images/mail_left_bg.gif">&nbsp;</td>
+                <!--第一行中间内容-->
+                <td valign="top" bgcolor="#F7F8F9">
+                    <table style="width:100%" width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <!-- 空白行-->
+                        <tr><td colspan="2" valign="top">&nbsp;</td><td>&nbsp;</td><td valign="top">&nbsp;</td></tr>
+						<tr>
+							<td colspan="4">
+								<form class="clearfix">
+									<div style="float:left">
+										<p style="float:left; margin-left:30px;"><label>员工姓名：</label><input class="text" style="width:80px;" list="emplist"  value="" /></p>&nbsp;&nbsp;&nbsp;
+										<p style="float:left; margin-left:30px;"><label>联系方式：</label><input class="text" style="width:80px;" value="" /></p>&nbsp;&nbsp;&nbsp;
+                                        <p style="float:left; margin-left:30px;"><label>所属部门：</label>
+											<select>
+												<option value="0">不限</option>
+												<option>中软高科</option>
+												<option>总经办</option>
+												<option>综合部</option>
+												<option>市场发展部</option>
+												<option>销售一部</option>
+												<option>销售二部</option>
+												<option>销售三部</option>
+												<option>财务科</option>
+											</select>
+										</p>&nbsp;&nbsp;&nbsp;
+                                        <p style="float:left; margin-left:30px;"><label>修改时间：</label><input class="text" style="width:80px;" value="" placeholder="时间插件"/> - <input class="text" style="width:80px;" value="" placeholder="时间插件"/></p>&nbsp;&nbsp;&nbsp;
+										<p style="float:left; margin-left:30px;"><input type="button" class="btn" value="查询"/></p>
+									</div>
+									<div style="float:right">
+										<input type="button" onclick='window.location="add.html"' class="btn" value="员工录入"/> 
+										<input type="button" class="btn" value="批量删除"/>										
+									
+									</div>
+								</form>
+								<datalist id="emplist">
+									<option value="张山"></option>
+									<option value="李诗诗"></option>
+									<option value="钟华"></option>
+									<option value="秦士篁"></option>
+									<option value="孙逸仙"></option>
+									<option value="李德胜"></option>
+									<option value="秦九韶"></option>
+									<option value="常凯申"></option>
+								</datalist>
+							<td>
+						</tr>
+                        <!-- 一条线 -->
+                        <tr>
+                            <td height="40" colspan="4">
+                                <table width="100%" height="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+                                    <tr><td></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- 列表展示开始 -->
+                        <tr>
+                            <td width="2%">&nbsp;</td>
+                            <td width="96%">
+                                <table width="100%">
+                                    <tr>
+                                        <td colspan="2">
+                                            <form action="" method="">
+                                                <table width="100%"  class="cont tr_color">
+                                                    <tr>
+                                                        <th>序号</th>
+                                                        <th>选择</th>
+                                                        <th>员工姓名</th>
+                                                        <th>性别</th>
+                                                        <th>联系方式</th>
+														<th>所属部门</th>
+                                                        <th>角色</th>
+                                                        <th>最后修改时间</th>
+                                                        <th>操作者</th>
+														<th>当前状态</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                    <tr align="center" class="d">
+                                                   		<td>51</td>
+                                                        <td><input type="checkbox" value="" /></td>
+                                                        <td><a href="view.html">张山</a></td>
+                                                        <td>男</td>
+                                                        <td>13691388151</td>
+                                                        <td>综合部</td>
+                                                        <td>系统管理员</td>
+														<td>2015-01-23</td>
+                                                        <td>张山</td>
+                                                        <td>启用</td>
+                                                         <td>
+															<a href="#">禁用</a>&nbsp;&nbsp;
+															<a href="emp_authorise.html">授权</a>&nbsp;&nbsp;
+                                                        	<a href="edit.html">修改</a>&nbsp;&nbsp;
+                                                            <a href="#" onclick="javascript:confirm('确定删除该员工吗？')">删除</a>
+														</td>
+                                                    </tr>
+                                                    <tr align="center" class="d">
+                                                   		<td>52</td>
+                                                        <td><input type="checkbox" value="" /></td>
+                                                        <td><a href="view.html">李诗诗</a></td>
+                                                        <td>女</td>
+                                                        <td>13691388152</td>
+                                                        <td>综合部</td>
+                                                        <td>系统管理员</td>
+														<td>2015-01-23</td>
+                                                        <td>张山</td>
+                                                        <td>启用</td>
+                                                        <td>
+															<a href="#">禁用</a>&nbsp;&nbsp;
+															<a href="emp_authorise.html">授权</a>&nbsp;&nbsp;
+                                                        	<a href="edit.html">修改</a>&nbsp;&nbsp;
+                                                            <a href="#" onclick="javascript:confirm('确定删除该员工吗？')">删除</a>
+														</td>
+                                                    </tr>
+                                                    <tr align="center" class="d">
+                                                   		<td>53</td>
+                                                         <td><input type="checkbox" value="" /></td>
+                                                        <td><a href="view.html">钟华</a></td>
+                                                        <td>男</td>
+                                                        <td>13291388177</td>
+                                                        <td>市场发展部</td>
+                                                        <td>销售总监</td>
+														<td>2015-01-23</td>
+                                                        <td>张山</td>
+                                                        <td>启用</td>
+                                                        <td>
+															<a href="#">禁用</a>&nbsp;&nbsp;
+															<a href="emp_authorise.html">授权</a>&nbsp;&nbsp;
+                                                        	<a href="edit.html">修改</a>&nbsp;&nbsp;
+                                                            <a href="#" onclick="javascript:confirm('确定删除该员工吗？')">删除</a>
+														</td>
+                                                    </tr>
+                                                    <tr align="center" class="d">
+                                                   		<td>54</td>
+                                                         <td><input type="checkbox" value="" /></td>
+                                                        <td><a href="view.html">秦士篁</a></td>
+                                                        <td>男</td>
+                                                        <td>15691388188</td>
+                                                        <td>销售一部</td>
+                                                        <td>销售经理</td>
+														<td>2015-01-23</td>
+                                                        <td>张山</td>
+                                                        <td>启用</td>
+                                                        <td>
+															<a href="#">禁用</a>&nbsp;&nbsp;
+															<a href="emp_authorise.html">授权</a>&nbsp;&nbsp;
+                                                        	<a href="edit.html">修改</a>&nbsp;&nbsp;
+                                                            <a href="#" onclick="javascript:confirm('确定删除该员工吗？')">删除</a>
+														</td>
+                                                    </tr>
+                                                    <tr align="center" class="d">
+                                                   		<td>55</td>
+                                                         <td><input type="checkbox" value="" /></td>
+                                                        <td><a href="view.html">孙逸仙</a></td>
+                                                        <td>男</td>
+                                                        <td>13691388198</td>
+                                                        <td>销售二部</td>
+                                                        <td>销售经理</td>
+														<td>2015-01-23</td>
+                                                        <td>李诗诗</td>
+                                                        <td>禁用</td>
+                                                        <td>
+															<a href="#">启用</a>&nbsp;&nbsp;
+															<a href="emp_authorise.html">授权</a>&nbsp;&nbsp;
+                                                        	<a href="edit.html">修改</a>&nbsp;&nbsp;
+                                                            <a href="#" onclick="javascript:confirm('确定删除该员工吗？')">删除</a>
+														</td>
+                                                    </tr>
+													<tr align="center" class="d">
+                                                   		<td>56</td>
+                                                         <td><input type="checkbox" value="" /></td>
+                                                        <td><a href="view.html">李德胜</a></td>
+                                                        <td>男</td>
+                                                        <td>15619491976</td>
+                                                        <td>销售三部</td>
+                                                        <td>销售经理</td>
+														<td>2015-01-23</td>
+                                                        <td>李诗诗</td>
+                                                        <td>启用</td>
+                                                        <td>
+															<a href="#">禁用</a>&nbsp;&nbsp;
+															<a href="emp_authorise.html">授权</a>&nbsp;&nbsp;
+                                                        	<a href="edit.html">修改</a>&nbsp;&nbsp;
+                                                            <a href="#" onclick="javascript:confirm('确定删除该员工吗？')">删除</a>
+														</td>
+                                                    </tr>
+													<tr align="center" class="d">
+                                                   		<td>57</td>
+                                                         <td><input type="checkbox" value="" /></td>
+                                                        <td><a href="view.html">常凯申</a></td>
+                                                        <td>男</td>
+                                                        <td>15619121975</td>
+                                                        <td>销售二部</td>
+                                                        <td>销售代表</td>
+														<td>2015-01-23</td>
+                                                        <td>李诗诗</td>
+                                                        <td>启用</td>
+                                                        <td>
+															<a href="#">禁用</a>&nbsp;&nbsp;
+															<a href="emp_authorise.html">授权</a>&nbsp;&nbsp;
+                                                        	<a href="edit.html">修改</a>&nbsp;&nbsp;
+                                                            <a href="#" onclick="javascript:confirm('确定删除该员工吗？')">删除</a>
+														</td>
+                                                    </tr>
+													<tr align="center" class="d">
+                                                   		<td>58</td>
+                                                        <td><input type="checkbox" value="" /></td>
+                                                        <td><a href="view.html">秦九韶</a></td>
+                                                        <td>男</td>
+                                                        <td>15619121970</td>
+                                                        <td>销售一部</td>
+                                                        <td>销售代表</td>
+														<td>2015-01-23</td>
+                                                        <td>张山</td>
+                                                        <td>启用</td>
+                                                        <td>
+															<a href="#">禁用</a>&nbsp;&nbsp;
+															<a href="emp_authorise.html">授权</a>&nbsp;&nbsp;
+                                                        	<a href="edit.html">修改</a>&nbsp;&nbsp;
+                                                            <a href="#" onclick="javascript:confirm('确定删除该员工吗？')">删除</a>
+														</td>
+                                                    </tr>
+													<tr align="center" class="d">
+                                                   		<td>59</td>
+                                                         <td><input type="checkbox" value="" /></td>
+                                                        <td><a href="view.html">朱代珍</a></td>
+                                                        <td>男</td>
+                                                        <td>13219491976</td>
+                                                        <td>销售三部</td>
+                                                        <td>销售代表</td>
+														<td>2015-01-23</td>
+                                                        <td>张山</td>
+                                                        <td>启用</td>
+                                                        <td>
+															<a href="#">禁用</a>&nbsp;&nbsp;
+															<a href="emp_authorise.html">授权</a>&nbsp;&nbsp;
+                                                        	<a href="edit.html">修改</a>&nbsp;&nbsp;
+                                                            <a href="#" onclick="javascript:confirm('确定删除该员工吗？')">删除</a>
+														</td>
+                                                    </tr>
+													<tr align="center" class="d">
+                                                   		<td>60</td>
+                                                         <td><input type="checkbox" value="" /></td>
+                                                        <td><a href="view.html">周翔宇</a></td>
+                                                        <td>男</td>
+                                                        <td>13319491976</td>
+                                                        <td>销售三部</td>
+                                                        <td>销售代表</td>
+														<td>2015-01-23</td>
+                                                        <td>张山</td>
+                                                        <td>启用</td>
+                                                        <td>
+															<a href="#">禁用</a>&nbsp;&nbsp;
+															<a href="emp_authorise.html">授权</a>&nbsp;&nbsp;
+                                                        	<a href="edit.html">修改</a>&nbsp;&nbsp;
+                                                            <a href="#" onclick="javascript:confirm('确定删除该员工吗？')">删除</a>
+														</td>
+                                                    </tr>
+                                                </table>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="2%">&nbsp;</td>
+                        </tr>
+                        <!--列表展示结束 -->
+                        <tr>
+                            <td height="40" colspan="4">
+                                <table width="100%" height="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+                                    <tr><td></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="2%">&nbsp;</td>
+                            <td width="51%" class="left_txt">
+                           		<input type="button" value="全选" />&nbsp;&nbsp;&nbsp;
+                                <input type="button" value="反选" />
+								<div style="float:right;"><b>
+									<a href="#">首页</a>&nbsp;&nbsp;&nbsp;
+									<a href="#">上一页</a>&nbsp;&nbsp;&nbsp;
+									&lt;&lt;&nbsp;&nbsp;&nbsp;
+									<a href="#">1</a>&nbsp;&nbsp;&nbsp;
+									<a href="#">2</a>&nbsp;&nbsp;&nbsp;
+									<a href="#">3</a>&nbsp;&nbsp;&nbsp;
+									<a href="#">4</a>&nbsp;&nbsp;&nbsp;
+									<font style="font-size:15pt">5</font>&nbsp;&nbsp;&nbsp;
+									<a href="#">6</a>&nbsp;&nbsp;&nbsp;
+									<a href="#">7</a>&nbsp;&nbsp;&nbsp;
+									<a href="#">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;
+									<a href="#">下一页</a>&nbsp;&nbsp;&nbsp;
+									<a href="#">尾页</a>&nbsp;&nbsp;&nbsp;
+									每页显示10条&nbsp;&nbsp;&nbsp;
+									当前 4/23 页&nbsp;&nbsp;&nbsp;
+									共225条
+								</b></div>
+                            </td>
+                            <td>&nbsp;</td><td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
+                <td background="../../../Images/mail_right_bg.gif">&nbsp;</td>
+            </tr>
+            <!-- 底部部分 -->
+            <tr>
+                <td valign="bottom" background="../../../Images/mail_left_bg.gif">
+                    <img src="../../../Images/buttom_left.gif" width="17" height="17" />
+                </td>
+                <td background="../../../Images/buttom_bgs.gif">
+                    <img src="../../../Images/buttom_bgs.gif" width="17" height="17">
+                </td>
+                <td valign="bottom" background="../../../Images/mail_right_bg.gif">
+                    <img src="../../../Images/buttom_right.gif" width="16" height="17" />
+                </td>           
+            </tr>
+        </table>
+    </body>
+</html>
